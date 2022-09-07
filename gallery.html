@@ -31,6 +31,17 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <link href="//fonts.googleapis.com/css?family=Josefin+Sans:300,400,600,700" rel="stylesheet">
 <link href="//fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 <!-- //web-fonts -->
+
+<!-- Email JS -->
+<script type="text/javascript"
+src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js">
+</script>
+<script type="text/javascript">
+(function(){
+emailjs.init("k3Qj7ea5zGs9767Gl");
+})();
+</script>
+<!-- Email JS -->
 </head>
 
 <body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">  
@@ -58,7 +69,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 						<ul class="nav navbar-nav navbar-right">
 							<!-- Hidden li included to remove active class from about link when scrolled up past about section -->
 							<li class="hidden"><a class="page-scroll" href="#page-top"></a>	</li>
-							<li><a class="hvr-sweep-to-right" href="tel:+916005935136" title="+916005935136">Call Now</a></li>
+							<li><a class="hvr-sweep-to-right" href="tel:+919149864934" title="+91-9149864934">Call Now</a></li>
 							<li><a class="hvr-sweep-to-right" href="index.html">Home</a></li>
 							<li><a class="hvr-sweep-to-right" href="about.html">About</a></li>
 							<!-- <li><a class="hvr-sweep-to-right" href="events.html">Events</a></li>
@@ -219,11 +230,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					</div>
 					<div class="contact-btm">
 						<span class="glyphicon glyphicon-earphone" aria-hidden="true"></span>
-						<p>+91-6005935136</p>
-					<div class="contact-btm">
+						<p>+91-9149864934</p>
+						<div class="contact-btm">
 					</div>
 						<span class="fa fa-envelope-o" aria-hidden="true"></span>
-						<p><a href="mailto:example@email.com">info@example.com</a></p>
+						<p><a href="mailto:eventplanner.jk@gmail.com">eventplanner.jk@gmail.com</a></p>
 					</div>
 					<div class="clearfix"></div>
 
@@ -243,9 +254,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		<div class="col-md-3 foot-left">
 		<h3>Subscribe</h3>
 		<p>Subscribe and be the first to receive exclusive offers and latest news from Event Planner and our partners. </p>
-		<form action="#" method="post">	
-				<input type="email" Name="Enter Your Email" placeholder="Enter Your Email" required="">
-			<input type="submit" value="Subscribe">
+		<form name="subscribeUser" action="javascript:subscribe();" method="post">
+			<input type="email" Name="subscribeEmail" placeholder="Enter Your Email" required="">
+			<input type="submit" value="Subscribe" >
 		</form>
 		</div>
 			<div class="clearfix"></div>
@@ -361,5 +372,19 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			});
 	</script>
 <!-- //here ends scrolling icon -->
+<script>
+function subscribe(){
+	var emailSub=document.subscribeUser.subscribeEmail.value;
+	var params={
+		from_name : emailSub,
+		to_name:"Event Planner\n You have gained a one new Subscriber.",
+		message:"The subscriber email is :- " +emailSub
+	};
+	emailjs.send("service_sqjpdvi","template_czu4wpk",params)
+	.then(function(res){
+		alert("Thank You for showing intrest in us...!" ,res.status);
+	});
+}
+</script>
 </body>
 </html>

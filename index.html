@@ -17,7 +17,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	<meta name="keywords" content="Events, Marriage, Party, birthDay " />
 	<link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon?v=2">
 	<link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
-
+	
 	<script
 		type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 	<!-- Custom Theme files -->
@@ -32,6 +32,16 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	<link href="//fonts.googleapis.com/css?family=Josefin+Sans:300,400,600,700" rel="stylesheet">
 	<link href="//fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 	<!-- //web-fonts -->
+<!-- Email JS -->
+	<script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js">
+</script>
+<script type="text/javascript">
+   (function(){
+      emailjs.init("k3Qj7ea5zGs9767Gl");
+   })();
+</script>
+<!-- Email JS -->
 </head>
 
 <body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
@@ -107,7 +117,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					<ul class="nav navbar-nav navbar-right">
 						<!-- Hidden li included to remove active class from about link when scrolled up past about section -->
 						<li class="hidden"><a class="page-scroll" href="#page-top"></a> </li>
-						<li><a class="hvr-sweep-to-right" href="tel:+916005935136" title="+916005935136">Call Now</a>
+						<li><a class="hvr-sweep-to-right" href="tel:+919149864934" title="+91-9149864934">Call Now</a></li>
 						</li>
 						<li><a class="hvr-sweep-to-right" href="about.html">About</a></li>
 						<!-- <li><a class="hvr-sweep-to-right" href="events.html">Events</a></li> -->
@@ -349,12 +359,12 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 						<h3>online event booking </h3>
 					</div>
 					<div class="abt-form text-center">
-						<form action="#" method="post">
+						<form action="javascript:sendEmail();" name="userForm" method="post">
 							<div class="col-sm-4 col-xs-4 w3ls-lt-form">
 								<div class="w3ls-pr">
-									
+
 									<input type="text" name="Name" placeholder="Name" required="required">
-									<input type="text" name="Message"  required="required" placeholder="Message">
+									<input type="text" name="Message" required="required" placeholder="Message">
 								</div>
 							</div>
 							<div class="col-sm-4 col-xs-4 w3ls-lt-form">
@@ -446,11 +456,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				</div>
 				<div class="contact-btm">
 					<span class="glyphicon glyphicon-earphone" aria-hidden="true"></span>
-					<p>+91-6005935136</p>
+					<p>+91-9149864934</p>
 					<div class="contact-btm">
 					</div>
 					<span class="fa fa-envelope-o" aria-hidden="true"></span>
-					<p><a href="mailto:example@email.com">info@example.com</a></p>
+					<p><a href="mailto:eventplanner.jk@gmail.com">eventplanner.jk@gmail.com</a></p>
 				</div>
 				<div class="clearfix"></div>
 
@@ -475,9 +485,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				<h3>Subscribe</h3>
 				<p>Subscribe and be the first to receive exclusive offers and latest news from Event Planner and our
 					partners. </p>
-				<form action="#" method="post">
-					<input type="email" Name="Enter Your Email" placeholder="Enter Your Email" required="">
-					<input type="submit" value="Subscribe">
+				<form name="subscribeUser" action="javascript:subscribe();" method="post">
+					<input type="email" Name="subscribeEmail" placeholder="Enter Your Email" required="">
+					<input type="submit" value="Subscribe" >
 				</form>
 			</div>
 			<div class="clearfix"></div>
@@ -621,55 +631,46 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		});
 	</script>
 	<!-- //here ends scrolling icon -->
-
-	<script src="https://code.jquery.com/jquery-2.2.4.min.js"
-		integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
-	<script src="https://smtpjs.com/v3/smtp.js"></script>
-	<script>
-
-		function sendmail() {
-
-			var name = $('#Name').val();
-			var phone = $('#Phoneno').val();
-			var email = $('#Email').val();
-			var date = $('#Date').val();
-			var time = $('#Time').val();
-			var message = $('#Message').val();
-
-			// var body = $('#body').val();
-
-			var body = 'Name: ' + name + '<br>Email: ' + email + '<br>Phone: ' + phone + '<br>Date: ' + date +'<br>Time: ' + time +'<br>Message: ' + message;
-			//console.log(name, phone, email, message);
-
-			Email.send({
-					Host: "smtp.gmail.com",
-					Username: "bhatsuhail926@gmail.com",
-					Password: "Alimasuhail12",
-					To: 'bhatsuhail9267@gmail.com',
-					From: email,
-					Subject: "You have recieved the new Booking of details below :-",
-					Body: body,
-				}).then(
-					message => {
-						//console.log (message);
-						if (message == 'OK') {
-							alert('Your mail has been send. Thank you for connecting.');
-						}
-						else {
-							console.error(message);
-							alert('There is error at sending message. ')
-
-						}
-
-					}
-				);
-
-
-
-			}
-
-
 	</script>
+
+	<!-- Email js send -->
+	<script>
+		function sendEmail(){
+			
+			var name=document.userForm.Name.value;
+			var email=document.userForm.Email.value;
+			var phone=document.userForm.Phoneno.value;
+			var date=document.userForm.Date.value;
+			var time=document.userForm.Time.value;
+			var message=document.userForm.Message.value;
+
+			var body='Email: '+email+'\nPhone: '+phone+'\nMessage: '+message+'\nDate: '+date+'\nTime: '+time;
+
+				var params={
+				from_name : name,
+				to_name:"Event Planner\n You have recieved new Booking Order.",
+				message:body
+			};
+			emailjs.send("service_sqjpdvi","template_czu4wpk",params)
+			.then(function(res){
+				alert("Thank You for choosing us your message has been sucessfully recieved we will get back to you soon...!" ,res.status);
+			});
+		}
+
+		function subscribe(){
+			var emailSub=document.subscribeUser.subscribeEmail.value;
+			var params={
+				from_name : emailSub,
+				to_name:"Event Planner\n You have gained a one new Subscriber.",
+				message:"The subscriber email is :- " +emailSub
+			};
+			emailjs.send("service_sqjpdvi","template_czu4wpk",params)
+			.then(function(res){
+				alert("Thank You for showing intrest in us...!" ,res.status);
+			});
+		}
+	</script>
+	<!-- Email js send -->
 </body>
 
 </html>
