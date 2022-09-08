@@ -668,7 +668,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 				var params={
 				from_name : name,
-				to_name:"Event Planner\n You have recieved new Booking Order.",
+				to_name:`Event Planner\n You have recieved new Booking Order from ${name}.`,
 				message:body
 			};
 			emailjs.send("service_sqjpdvi","template_czu4wpk",params)

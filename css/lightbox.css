@@ -9,7 +9,7 @@ body:after {
   top: 0;
   left: 0;
   z-index: 9999;
-  background-color: rgb(187, 28, 28);
+  background-color: rgb(255, 235, 235);
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80);
   opacity: 0.8;
   display: none;

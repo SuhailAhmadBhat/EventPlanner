@@ -1,9 +1,4 @@
-<!--
-Author: W3layouts
-Author URL: http://w3layouts.com
-License: Creative Commons Attribution 3.0 Unported
-License URL: http://creativecommons.org/licenses/by/3.0/
--->
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -282,7 +277,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 			var params = {
 				from_name: name,
-				to_name: "Event Planner\n This person needs to contact with you.",
+				to_name: `Event Planner\n ${name} needs to contact with you.`,
 				message: body
 			};
 			emailjs.send("service_sqjpdvi", "template_czu4wpk", params)
